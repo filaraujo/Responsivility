@@ -2,5 +2,11 @@
 html
   head
     title= title
+    link(rel='stylesheet', href='/stylesheets/reset.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body!= body
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js')
+    script(src='/javascripts/tracking.js')
+  body
+    header!= 'header'
+    section.page!= body
+    footer

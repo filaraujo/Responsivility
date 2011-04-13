@@ -13,6 +13,7 @@ app.configure(function() {
 	app.set('view engine', 'jade');
 	app.use(express.cookieParser());
 	app.use(express.session({ secret: "keyboard cat" }))
+	app.use(express.errorHandler({ dump: true, stack: true }));
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
 	app.use(app.router);
@@ -54,16 +55,12 @@ app.get('/track', function(req, res) {
 
 	res.send({ user : req.cookies['connect.sid']}, 202);
 
-//	res.writeHead(202, {
-//
-//	});
-
 });
 
 
 // Only listen on $ node app.js
 
 if (!module.parent) {
-	app.listen(80);
+	app.listen(8080);
 	console.log("Express server listening on port %d", app.address().port);
 }

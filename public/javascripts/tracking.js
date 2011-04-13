@@ -1,5 +1,5 @@
 (function(){
-	var url = '//localhost:3000/track',
+	var url = '//localhost:8080/track',
 
 	success = function(){
 		console.log('success');

@@ -38,8 +38,8 @@ app.get('/', function(req, res) {
 
 app.get('/track', function(req, res) {
 	var agent,
-			client,
-			reqAgent = req.headers['user-agent'];
+		client,
+		reqAgent = req.headers['user-agent'];
 
 	agent = ua.parser(reqAgent);
 	client = {
@@ -49,11 +49,10 @@ app.get('/track', function(req, res) {
 		os : agent.prettyOs()
 	};
 
-	console.log(req.session);
-
-	console.log(client.browser);
-
 	res.send({ user : req.cookies['connect.sid']}, 202);
+
+	//https://github.com/LearnBoost/mongoose
+	//https://github.com/masylum/mongolia
 
 });
 

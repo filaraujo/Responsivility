@@ -4,7 +4,6 @@
  */
 
 var express = require('express'),
-    fs = require('fs'),
     http = require('http'),
     request = require('request');
 

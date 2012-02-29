@@ -1,6 +1,23 @@
-!!!
+!!! 5
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body!= body
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/base.css')
+        block css
+
+        block header-scripts
+    body
+        div.page
+            include modules/header
+            block header
+            
+            div.page-content
+                != body
+
+            block footer
+
+        block templates
+
+        script(src='/javascripts/vendor/jquery/jquery-1.7.1.min.js')
+        script(src='/javascripts/responsive.js')
+        block footer-scripts

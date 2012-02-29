@@ -1,0 +1,20 @@
+div.devices
+    each device in devices
+        div.device(class="#{device.id}", data-dimensions="[#{device.dimensions}]")
+            if device.name == "auto"
+                div.rule-left(style="right:-100%")
+                div.rule-right(style="left:-100%")
+            else
+                div.rule-left(style="right:-#{device.position[1]}px")
+                div.rule-right(style="left:-#{device.position[1]}px")
+
+div.ruler
+    div.ruler-left
+        div.mark
+        each rule, i in rules
+            if( i != 0)
+                div.rule(style="right:#{rule}px", data-rule="#{rule}")
+    div.ruler-right
+        div.mark
+        each rule, i in rules
+            div.rule(style="left:#{rule}px", data-rule="#{rule}")

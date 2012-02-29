@@ -1,0 +1,239 @@
+@import '../stylus/normalize'
+@import 'nib'
+
+$headerSize = 85px
+$headerPadding = 10px
+
+$rulerHeight = 8px
+$rulerRoundedCorner = 1px
+$rulerStartPoint = 50px
+$rulerSize = 6000px
+$rulerInterval = 50px
+
+$deviceScale = .028
+$devicesStartPoint = 30px
+
+$desktopWidth = 1200px
+$desktopHeight = 800px
+
+$tabletLandscapeWidth = 1024px
+$tabletLandscapeHeight = 768px
+
+$mobileLandscapeWidth = 480px
+$mobileLandscapeHeight = 320px
+
+$smallTabletLandscapeWidth = 640px
+$smallTabletLandscapeHeight = 460px
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body
+    background: #585858
+
+.page
+    margin: 0
+
+    header
+        background: #eee /*585858*/
+        border-bottom: 1px solid #666;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .6)
+        color: #fff
+        height: $headerSize
+        left: -1 * $headerPadding
+        padding: $headerPadding $headerPadding 0
+        position: fixed
+        right: -1 * $headerPadding
+        top: -1 * $headerPadding
+
+        .devices
+            absolute: left 0 right 0
+            top: $devicesStartPoint
+            height: 1px;
+            z-index: 2
+
+            .device
+                absolute: top 0 left 50%
+
+                .rule-left,
+                .rule-right
+                    background: #96def6
+                    display: none
+                    height: 7px
+                    absolute: left 50% top 20px
+                    width: auto
+
+                .rule-left
+                    left: 0
+
+                .rule-right
+                    right: 0
+
+            .device:hover .rule-left,
+            .device:hover .rule-right
+                display: block
+
+            .device:after
+                background: #e7e7e7
+                border-radius: 2px
+                box-shadow: inset 0 1px 1px rgba(0, 0, 0, .2)
+                content: ''
+                absolute: top 0 left 50%
+                z-index: 3
+
+            .device:hover:after
+                background: #96def6
+                box-shadow: inset 0 1px 1px rgba(0, 0, 0, .4)
+
+            .device.auto:after
+                border-radius: 10px
+                height: 10px
+                margin-left: -115px
+                margin-top: -5px
+                width: 10px
+
+            .device.desktop:after
+                height: $desktopHeight * $deviceScale
+                margin-left: (-1 * $desktopWidth * $deviceScale / 2 )
+                margin-top: (-1 * $desktopHeight * $deviceScale / 2 )
+                width: $desktopWidth * $deviceScale
+
+            .device.tablet-landscape:after
+                height: $tabletLandscapeHeight * $deviceScale
+                margin-left: -60px
+                margin-top: (-1 * $tabletLandscapeHeight * $deviceScale / 2 )
+                width: $tabletLandscapeWidth * $deviceScale
+
+            .device.tablet-portrait:after
+                height: $tabletLandscapeWidth * $deviceScale
+                margin-left: -95px
+                margin-top: (-1 * $tabletLandscapeWidth * $deviceScale / 2 )
+                width: $tabletLandscapeHeight * $deviceScale
+
+            .device.mobile-landscape:after
+                height: $mobileLandscapeHeight * $deviceScale
+                margin-left: 30px
+                margin-top: (-1 * $mobileLandscapeHeight * $deviceScale / 2 )
+                width: $mobileLandscapeWidth * $deviceScale
+
+            .device.mobile-portrait:after
+                height: $mobileLandscapeWidth * $deviceScale
+                margin-left: 55px
+                margin-top: (-1 * $mobileLandscapeWidth * $deviceScale / 2 )
+                width: $mobileLandscapeHeight * $deviceScale
+
+            .device.small-tablet-landscape:after
+                height: $smallTabletLandscapeWidth * $deviceScale
+                margin-left: 75px
+                margin-top: (-1 * $smallTabletLandscapeWidth * $deviceScale / 2 )
+                width: $smallTabletLandscapeHeight * $deviceScale
+
+            .device.small-tablet-portrait:after
+                height: $smallTabletLandscapeHeight * $deviceScale
+                margin-left: 100px
+                margin-top: (-1 * $smallTabletLandscapeHeight * $deviceScale / 2 )
+                width: $smallTabletLandscapeWidth * $deviceScale
+
+        .ruler
+            background: #d7d7d7
+            border-bottom: 1px solid #fff
+            box-shadow: inset 0 1px 1px #acacac
+            height: $rulerHeight
+            top: $rulerStartPoint
+            absolute: left 50%
+            margin-left:  -1 * ($rulerSize / 2)
+            width: $rulerSize
+
+            .ruler-left,
+            .ruler-right
+                background: #4ab2d4
+                height: 100%
+                min-width: 150px
+                transition( width .4s )
+                width: 100%
+                z-index: 3
+
+                .mark
+                    background: #fcc;
+                    height: 20px
+                    absolute: top -20px
+                    width: 20px
+
+            .ruler-left
+                absolute: right 50%
+                margin-right: -1 * $rulerRoundedCorner
+
+                .mark
+                    left: -10px
+
+            .ruler-right
+                absolute: left 50%
+                margin-left: -1 * $rulerRoundedCorner
+
+                .mark
+                    right -10px
+
+            .ruler-left:after
+            .ruler-right:after
+                content: ''
+                position: absolute
+                top: 0
+                height: 100%
+                width: 30px
+
+            .ruler-left:after
+                background: linear-gradient(right, #4ab2d4 0%, #5ec1e1 50%)
+                border-radius: $rulerRoundedCorner 0 0 $rulerRoundedCorner
+                left: -1 * $rulerRoundedCorner
+
+            .ruler-right:after
+                background: linear-gradient(left, #4ab2d4 0%, #5ec1e1 50%)
+                border-radius: 0 $rulerRoundedCorner $rulerRoundedCorner 0
+                right: -1 * $rulerRoundedCorner - 1
+
+            .rule
+                border: 1px solid #d7d7d7
+                border-left-color: #fff
+                height: 5px
+                position: absolute
+                top: $rulerHeight - 1
+                z-index: 2
+                width: 1px
+
+            .rule:after
+                content: attr(data-rule)
+                color: #bbb
+                font: 9px/10px Verdana, san-serif
+                position: absolute
+                bottom: -12px
+                left: -1 * $rulerInterval
+                text-align: center
+                width: $rulerInterval * 2
+
+        .ruler:after
+            content: ''
+            position: absolute
+            top: 0
+            box-shadow: inset 0 1px rgba(0, 0, 0, .15)
+            height: 100%
+            width: 30px
+
+
+    .page-content
+        background: #fff
+        height: 100%
+        margin: $headerSize - 10 auto auto;
+        top: 0
+        width: 100%
+
+        iframe
+            border: 0
+            box-shadow: 0 0 10px rgba(0, 0, 0, .6)
+            margin: auto
+            height: 100%
+            width: 100%
+
+    .page-content.fx
+        transition( width .4s )

@@ -277,7 +277,7 @@ body
                 line-height: 24px
                 padding: 0 10px
                 outline: none
-                transition( all .4s )
+                transition( all .75s )
                 width: 80px
 
             button
@@ -292,6 +292,14 @@ body
                 text-transform: uppercase
                 width: 50px
 
+            button:before
+                background: linear-gradient(left, rgba(255,255,255,0) , #fff 66%)
+                content: ''
+                height: 22px
+                absolute: left -40px top 1px
+                width: 40px
+
+
     .url:hover input
         width: 500px
 
@@ -299,13 +307,12 @@ body
         background: #fff
         height: 100%
         margin: -2px auto auto;
-        top: 1px
+        top: $headerSize - 10px
         position: relative
         width: 100%
 
         iframe
             border: 0
-            box-shadow: 0 10px 10px rgba(0, 0, 0, .6)
             margin: auto
             height: 100%
             width: 100%

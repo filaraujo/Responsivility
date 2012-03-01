@@ -91,9 +91,10 @@ html,body{background:#585858;overflow:hidden}
 .page header .ruler:after{content:'';position:absolute;top:0;-webkit-box-shadow:inset 0 1px rgba(0,0,0,0.15);-moz-box-shadow:inset 0 1px rgba(0,0,0,0.15);box-shadow:inset 0 1px rgba(0,0,0,0.15);height:100%;width:30px}
 .page .url{height:30px;position:absolute;top:23px;left:20px;z-index:4;}
 .page .url form{padding-right:50px;width:100%;}
-.page .url form input{-webkit-border-radius:4px 0 0 4px;-moz-border-radius:4px 0 0 4px;border-radius:4px 0 0 4px;border:0;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.20);-moz-box-shadow:inset 0 1px 1px rgba(0,0,0,0.20);box-shadow:inset 0 1px 1px rgba(0,0,0,0.20);color:#666;font-size:12px;line-height:24px;padding:0 10px;outline:none;-webkit-transition:all .4s;-moz-transition:all .4s;transition:all .4s;width:80px}
+.page .url form input{-webkit-border-radius:4px 0 0 4px;-moz-border-radius:4px 0 0 4px;border-radius:4px 0 0 4px;border:0;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.20);-moz-box-shadow:inset 0 1px 1px rgba(0,0,0,0.20);box-shadow:inset 0 1px 1px rgba(0,0,0,0.20);color:#666;font-size:12px;line-height:24px;padding:0 10px;outline:none;-webkit-transition:all .75s;-moz-transition:all .75s;transition:all .75s;width:80px}
 .page .url form button{background:#4ab2d4;border:0;-webkit-border-radius:0 4px 4px 0;-moz-border-radius:0 4px 4px 0;border-radius:0 4px 4px 0;color:#fff;font-size:10px;height:24px;line-height:20px;position:absolute;right:20px;((null)):0;text-transform:uppercase;width:50px}
+.page .url form button:before{background:-webkit-gradient(linear, left top, right top, color-stop(0, rgba(255,255,255,0.00)), color-stop(0.66, #fff));background:-webkit-linear-gradient(left, rgba(255,255,255,0.00) 0%, #fff 66%);background:-moz-linear-gradient(left, rgba(255,255,255,0.00) 0%, #fff 66%);background:linear-gradient(left, rgba(255,255,255,0.00) 0%, #fff 66%);content:'';height:22px;position:absolute;left:-40px;top:1px;width:40px}
 .page .url:hover input{width:500px}
-.page .page-content{background:#fff;height:100%;margin:-2px auto auto;top:1px;position:relative;width:100%;}
-.page .page-content iframe{border:0;-webkit-box-shadow:0 10px 10px rgba(0,0,0,0.60);-moz-box-shadow:0 10px 10px rgba(0,0,0,0.60);box-shadow:0 10px 10px rgba(0,0,0,0.60);margin:auto;height:100%;width:100%}
+.page .page-content{background:#fff;height:100%;margin:-2px auto auto;top:85px;position:relative;width:100%;}
+.page .page-content iframe{border:0;margin:auto;height:100%;width:100%}
 .page .page-content.fx{-webkit-transition:width .4s;-moz-transition:width .4s;transition:width .4s}

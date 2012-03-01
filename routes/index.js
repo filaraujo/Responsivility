@@ -7,7 +7,7 @@ var rulerWidth = 6000,
     ruleCount = rulerWidth / 2 / interval,
     rules = [],
     devices = [
-        { 'name': 'auto', id: 'auto', dimensions: ['100%','100%'] },
+        { 'name': 'Full Screen', id: 'auto', dimensions: ['100%','100%'] },
         { 'name': 'Desktop', id: 'desktop', dimensions: [1200, 800] },
         { 'name': 'Tablet Portrait', id: 'tablet-portrait', dimensions: [768, 1024] },
         { 'name': 'Tablet Landscape', id: 'tablet-landscape', dimensions: [1024, 768] },

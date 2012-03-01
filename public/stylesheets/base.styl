@@ -1,7 +1,7 @@
 @import '../stylus/normalize'
 @import 'nib'
 
-$headerSize = 95px
+$headerSize = 85px
 $headerPadding = 10px
 
 $rulerHeight = 8px
@@ -12,7 +12,7 @@ $rulerSize = 6000px
 $rulerInterval = 50px
 
 $deviceScale = .028
-$devicesStartPoint = 36px
+$devicesStartPoint = 31px
 
 $desktopWidth = 1200px
 $desktopHeight = 800px
@@ -69,6 +69,20 @@ body
             .device
                 cursor: pointer
 
+                p
+                    background: #4ab2d4
+                    border-radius: 3px
+                    box-shadow: 0 1px 2px rgba(0, 0, 0, .3)
+                    color: #fff
+                    display: none
+                    font-size: 12px
+                    absolute: top 50px left 50%
+                    margin-left: -120px
+                    padding: 10px
+                    text-align: center
+                    width: 240px
+                    z-index: 5
+
             .device:after
                 background: #e7e7e7
                 border-radius: 2px
@@ -76,6 +90,9 @@ body
                 content: ''
                 absolute: top 0 left 50%
                 z-index: 4
+
+            .device:hover p
+                display: block
 
             .device:hover:after
                 background: #96def6
@@ -90,7 +107,7 @@ body
                 content: ''
                 display: none
                 height: 7px
-                absolute: top 25px left 50%
+                absolute: top 20px left 50%
 
             .device:hover:before
                 display: block
@@ -260,12 +277,13 @@ body
             width: 30px
 
     .url
-        height: 30px
-        absolute: top 23px left 20px
+        border-radius: 4px
+        box-shadow: 0 1px 2px rgba(0, 0, 0, .3)
+        absolute: top 98px left 18px
         z-index: 4
 
         form
-            padding-right: 50px
+            padding-right: 35px;
             width: 100%
 
             input
@@ -278,30 +296,24 @@ body
                 padding: 0 10px
                 outline: none
                 transition( all .75s )
-                width: 80px
+                width: 52px
 
             button
-                background: #4ab2d4
+                background: linear-gradient(top, #4ab2d4 0%, #5ec1e1)
                 border: 0
                 border-radius: 0 4px 4px 0
                 color: #fff
                 font-size: 10px
                 height: 24px
                 line-height: 20px
-                absolute: right 20px
+                absolute: right 0
                 text-transform: uppercase
-                width: 50px
-
-            button:before
-                background: linear-gradient(left, rgba(255,255,255,0) , #fff 66%)
-                content: ''
-                height: 22px
-                absolute: left -40px top 1px
-                width: 40px
+                width: 35px
 
 
-    .url:hover input
-        width: 500px
+    .url:hover
+        input
+            width: 500px
 
     .page-content
         background: #fff

@@ -1,17 +1,18 @@
 @import '../stylus/normalize'
 @import 'nib'
 
-$headerSize = 85px
+$headerSize = 95px
 $headerPadding = 10px
 
 $rulerHeight = 8px
 $rulerRoundedCorner = 1px
-$rulerStartPoint = 50px
+$rulerStartPoint = 25px
+
 $rulerSize = 6000px
 $rulerInterval = 50px
 
 $deviceScale = .028
-$devicesStartPoint = 30px
+$devicesStartPoint = 36px
 
 $desktopWidth = 1200px
 $desktopHeight = 800px
@@ -25,20 +26,28 @@ $mobileLandscapeHeight = 320px
 $smallTabletLandscapeWidth = 640px
 $smallTabletLandscapeHeight = 460px
 
-* {
+*
     box-sizing: border-box
-}
+
+::-webkit-input-placeholder
+    color: #bbb
+    font-size: 12px
+
+:-moz-placeholder
+    color: #bbb
+    font-size: 12px
 
 html,
 body
     background: #585858
+    overflow: hidden
 
 .page
     margin: 0
 
     header
         background: #eee /*585858*/
-        border-bottom: 1px solid #666;
+        border-bottom: 1px solid #fff
         box-shadow: 0 0 10px rgba(0, 0, 0, .6)
         color: #fff
         height: $headerSize
@@ -47,33 +56,18 @@ body
         position: fixed
         right: -1 * $headerPadding
         top: -1 * $headerPadding
+        z-index: 2
 
         .devices
-            absolute: left 0 right 0
+            absolute: left 50%
             top: $devicesStartPoint
             height: 1px;
-            z-index: 2
+            margin-left:  -1 * ($rulerSize / 2)
+            width: $rulerSize
+            z-index: 3
 
             .device
-                absolute: top 0 left 50%
-
-                .rule-left,
-                .rule-right
-                    background: #96def6
-                    display: none
-                    height: 7px
-                    absolute: left 50% top 20px
-                    width: auto
-
-                .rule-left
-                    left: 0
-
-                .rule-right
-                    right: 0
-
-            .device:hover .rule-left,
-            .device:hover .rule-right
-                display: block
+                cursor: pointer
 
             .device:after
                 background: #e7e7e7
@@ -81,67 +75,113 @@ body
                 box-shadow: inset 0 1px 1px rgba(0, 0, 0, .2)
                 content: ''
                 absolute: top 0 left 50%
-                z-index: 3
+                z-index: 4
 
             .device:hover:after
                 background: #96def6
                 box-shadow: inset 0 1px 1px rgba(0, 0, 0, .4)
 
+            .device.selected:after
+                background: #4ab2d4
+                box-shadow: inset 0 1px 1px rgba(0, 0, 0, .2)
+
+            .device:before
+                background: #96def6
+                content: ''
+                display: none
+                height: 7px
+                absolute: top 25px left 50%
+
+            .device:hover:before
+                display: block
+
+            .device.auto:before
+                left: 0
+                right: 0
+
             .device.auto:after
                 border-radius: 10px
-                height: 10px
-                margin-left: -115px
-                margin-top: -5px
-                width: 10px
+                height: 8px
+                margin-left: -4px
+                margin-top: -4px
+                width: 8px
+
+            .device.desktop:before
+                margin-left: (-1 * $desktopWidth / 2)
+                width: $desktopWidth
 
             .device.desktop:after
                 height: $desktopHeight * $deviceScale
-                margin-left: (-1 * $desktopWidth * $deviceScale / 2 )
+                margin-left: -125px
                 margin-top: (-1 * $desktopHeight * $deviceScale / 2 )
                 width: $desktopWidth * $deviceScale
 
-            .device.tablet-landscape:after
-                height: $tabletLandscapeHeight * $deviceScale
-                margin-left: -60px
-                margin-top: (-1 * $tabletLandscapeHeight * $deviceScale / 2 )
-                width: $tabletLandscapeWidth * $deviceScale
+            .device.tablet-portrait:before
+                margin-left: (-1 * $tabletLandscapeHeight / 2)
+                width: $tabletLandscapeHeight
 
             .device.tablet-portrait:after
                 height: $tabletLandscapeWidth * $deviceScale
-                margin-left: -95px
+                margin-left: 60px
                 margin-top: (-1 * $tabletLandscapeWidth * $deviceScale / 2 )
                 width: $tabletLandscapeHeight * $deviceScale
 
-            .device.mobile-landscape:after
-                height: $mobileLandscapeHeight * $deviceScale
-                margin-left: 30px
-                margin-top: (-1 * $mobileLandscapeHeight * $deviceScale / 2 )
-                width: $mobileLandscapeWidth * $deviceScale
+            .device.tablet-landscape:before
+                margin-left: (-1 * $tabletLandscapeWidth / 2)
+                width: $tabletLandscapeWidth
 
-            .device.mobile-portrait:after
-                height: $mobileLandscapeWidth * $deviceScale
-                margin-left: 55px
-                margin-top: (-1 * $mobileLandscapeWidth * $deviceScale / 2 )
-                width: $mobileLandscapeHeight * $deviceScale
+            .device.tablet-landscape:after
+                height: $tabletLandscapeHeight * $deviceScale
+                margin-left: -85px
+                margin-top: (-1 * $tabletLandscapeHeight * $deviceScale / 2 )
+                width: $tabletLandscapeWidth * $deviceScale
 
-            .device.small-tablet-landscape:after
+            .device.small-tablet-portrait:before
+                margin-left: (-1 * $smallTabletLandscapeHeight / 2)
+                width: $smallTabletLandscapeHeight
+
+            .device.small-tablet-portrait:after
                 height: $smallTabletLandscapeWidth * $deviceScale
-                margin-left: 75px
+                margin-left: 35px
                 margin-top: (-1 * $smallTabletLandscapeWidth * $deviceScale / 2 )
                 width: $smallTabletLandscapeHeight * $deviceScale
 
-            .device.small-tablet-portrait:after
+            .device.small-tablet-landscape:before
+                margin-left: (-1 * $smallTabletLandscapeWidth / 2)
+                width: $smallTabletLandscapeWidth
+
+            .device.small-tablet-landscape:after
                 height: $smallTabletLandscapeHeight * $deviceScale
-                margin-left: 100px
+                margin-left: -50px
                 margin-top: (-1 * $smallTabletLandscapeHeight * $deviceScale / 2 )
                 width: $smallTabletLandscapeWidth * $deviceScale
+
+            .device.mobile-portrait:before
+                margin-left: (-1 * $mobileLandscapeHeight / 2)
+                width: $mobileLandscapeHeight
+
+            .device.mobile-portrait:after
+                height: $mobileLandscapeWidth * $deviceScale
+                margin-left: 15px
+                margin-top: (-1 * $mobileLandscapeWidth * $deviceScale / 2 )
+                width: $mobileLandscapeHeight * $deviceScale
+
+            .device.mobile-landscape:before
+                margin-left: (-1 * $mobileLandscapeWidth / 2)
+                width: $mobileLandscapeWidth
+
+            .device.mobile-landscape:after
+                height: $mobileLandscapeHeight * $deviceScale
+                margin-left: -25px
+                margin-top: (-1 * $mobileLandscapeHeight * $deviceScale / 2 )
+                width: $mobileLandscapeWidth * $deviceScale
 
         .ruler
             background: #d7d7d7
             border-bottom: 1px solid #fff
+            bottom: $rulerStartPoint
             box-shadow: inset 0 1px 1px #acacac
             height: $rulerHeight
-            top: $rulerStartPoint
             absolute: left 50%
             margin-left:  -1 * ($rulerSize / 2)
             width: $rulerSize
@@ -153,7 +193,7 @@ body
                 min-width: 150px
                 transition( width .4s )
                 width: 100%
-                z-index: 3
+                z-index: 5
 
                 .mark
                     background: #fcc;
@@ -178,8 +218,7 @@ body
             .ruler-left:after
             .ruler-right:after
                 content: ''
-                position: absolute
-                top: 0
+                absolute: top 0
                 height: 100%
                 width: 30px
 
@@ -199,7 +238,7 @@ body
                 height: 5px
                 position: absolute
                 top: $rulerHeight - 1
-                z-index: 2
+                z-index: 3
                 width: 1px
 
             .rule:after
@@ -220,17 +259,53 @@ body
             height: 100%
             width: 30px
 
+    .url
+        height: 30px
+        absolute: top 23px left 20px
+        z-index: 4
+
+        form
+            padding-right: 50px
+            width: 100%
+
+            input
+                border-radius: 4px 0 0 4px
+                border: 0
+                box-shadow: inset 0 1px 1px rgba(0, 0, 0, .2)
+                color: #666
+                font-size: 12px
+                line-height: 24px
+                padding: 0 10px
+                outline: none
+                transition( all .4s )
+                width: 80px
+
+            button
+                background: #4ab2d4
+                border: 0
+                border-radius: 0 4px 4px 0
+                color: #fff
+                font-size: 10px
+                height: 24px
+                line-height: 20px
+                absolute: right 20px
+                text-transform: uppercase
+                width: 50px
+
+    .url:hover input
+        width: 500px
 
     .page-content
         background: #fff
         height: 100%
-        margin: $headerSize - 10 auto auto;
-        top: 0
+        margin: -2px auto auto;
+        top: 1px
+        position: relative
         width: 100%
 
         iframe
             border: 0
-            box-shadow: 0 0 10px rgba(0, 0, 0, .6)
+            box-shadow: 0 10px 10px rgba(0, 0, 0, .6)
             margin: auto
             height: 100%
             width: 100%

@@ -1,51 +1,54 @@
-var Responsive = (function(){
+(function(){
 
     var
-        $pageWidth,
+        $body,
 
         $devices,
 
+        $iframe,
+
+        $input,
+
         $page,
+
+        $urlPanel,
 
         $rulers,
 
-        responsiveCallback = $.Callbacks(),
+        setFrame = function(){
+            $iframe.attr( 'src', $input.val() );
+            return false;
+        },
 
-        extractDimensions = function(){
+        setResponsive = function( dimensions ){
 
             var $el = $( this ),
                 dimensions = [];
 
             if ( $el.is( '.auto' ) ) {
-                dimensions = [$( 'body' ).width(), $( 'body' ).height()];
+                dimensions = [$body.width(), $(window).height()];
             }
             else {
                 dimensions = dimensions.concat( $el.data( 'dimensions' ));
             }
 
-
-            responsiveCallback.fire( dimensions );
-        },
-
-
-        setResponsive = function( dimensions ){
-
-            if( !dimensions ){
-                return;
-            }
-
             $page.width( dimensions[0] ).height( dimensions[1] );
             $rulers.width( dimensions[0] / 2 );
+            $devices.removeClass( 'selected' );
+
+            $el.addClass( 'selected' );
 
         };
 
-    responsiveCallback.add( setResponsive )
-
-    $page = $( '.page-content' );
+    $body = $( 'body' );
+    $page = $( '.page-content' ).addClass( 'fx' );
+    $iframe = $page.find( 'iframe' );
     $rulers = $( '.ruler-left, .ruler-right');
-    $devices = $( '.devices' ).on( 'click', '.device', extractDimensions )
+    $devices  = $( '.device' ).on( 'click', setResponsive );
 
-    $page.addClass( 'fx' );
+    $input = $('.url', $body ).on( 'submit', 'form', setFrame ).find( 'input' );
+
+    $devices.filter( '.auto' ).trigger( 'click' ).end();
 
     return {};
 })();

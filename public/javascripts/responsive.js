@@ -11,9 +11,9 @@
 
         $page,
 
-        $urlPanel,
+        $mark,
 
-        $rulers,
+        $marker,
 
         setFrame = function(){
             $iframe.attr( 'src', $input.val() );
@@ -33,7 +33,7 @@
             }
 
             $page.width( dimensions[0] ).height( dimensions[1] );
-            $rulers.width( dimensions[0] / 2 );
+            $marker.width( dimensions[0] );
             $devices.removeClass( 'selected' );
 
             $el.addClass( 'selected' );
@@ -43,12 +43,19 @@
     $body = $( 'body' );
     $page = $( '.page-content' ).addClass( 'fx' );
     $iframe = $page.find( 'iframe' );
-    $rulers = $( '.ruler-left, .ruler-right');
+    $marker = $( '.ruler-marker');
     $devices  = $( '.device' ).on( 'click', setResponsive );
-
     $input = $('.url', $body ).on( 'submit', 'form', setFrame ).find( 'input' );
-
     $devices.filter( '.auto' ).trigger( 'click' ).end();
+
+//    $marker.resizable({
+//        handles: 'e, w',
+//        maxHeight: 7,
+//        minHeight: 7,
+//        minWidth: 300
+//    });
+
+
 
     return {};
 })();

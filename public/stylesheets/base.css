@@ -54,6 +54,8 @@ html,body{background:#585858;overflow:hidden}
 .page{margin:0;}
 .page header{background:#eee;border-bottom:1px solid #fff;-webkit-box-shadow:0 0 10px rgba(0,0,0,0.60);-moz-box-shadow:0 0 10px rgba(0,0,0,0.60);box-shadow:0 0 10px rgba(0,0,0,0.60);color:#fff;height:85px;left:-10px;padding:10px 10px 0;position:fixed;right:-10px;top:-10px;z-index:2;}
 .page header h1{position:absolute;left:20px;top:8px;color:#4ab2d4;font-size:22px;margin:10px 0 0;text-shadow:1px 1px 0 #fff}
+.page header .help{color:#4ab2d4;cursor:pointer;position:absolute;right:20px;top:20px;}
+.page header .help:hover{color:#fff}
 .page header .devices{position:absolute;left:50%;((null)):0;top:31px;height:1px;margin-left:-3000px;width:6000px;z-index:3;}
 .page header .devices .device{cursor:pointer;}
 .page header .devices .device p{background:#4ab2d4;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 2px rgba(0,0,0,0.30);-moz-box-shadow:0 1px 2px rgba(0,0,0,0.30);box-shadow:0 1px 2px rgba(0,0,0,0.30);color:#fff;display:none;font-size:12px;position:absolute;top:50px;left:50%;margin-left:-120px;padding:10px;text-align:center;width:240px;z-index:5}

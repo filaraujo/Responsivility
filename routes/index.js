@@ -32,6 +32,6 @@ exports.index = function(req, res){
         title: 'Responsive Design',
         rules: rules,
         devices: devices,
-        site: req.query.q
+        site: req.query.q || ''
     });
 };

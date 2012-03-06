@@ -28,9 +28,10 @@ devices.map( function( device ){
 rules = rules.reverse();
 
 exports.index = function(req, res){
-  res.render('index', {
-      title: 'Responsive Design',
-      rules: rules,
-      devices: devices
-  });
+    res.render('index', {
+        title: 'Responsive Design',
+        rules: rules,
+        devices: devices,
+        site: req.query.q
+    });
 };

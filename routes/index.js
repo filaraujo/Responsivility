@@ -29,7 +29,7 @@ rules = rules.reverse();
 
 exports.index = function(req, res){
     res.render('index', {
-        title: 'Responsive Design',
+        title: 'Responsivility',
         rules: rules,
         devices: devices,
         site: req.query.q || ''

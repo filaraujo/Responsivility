@@ -1,4 +1,4 @@
 div.devices
     each device in devices
-        div.device(class="#{device.id} selected", data-dimensions="[#{device.dimensions}]")
+        div.device(class="#{device.id}", data-dimensions="[#{device.dimensions}]", data-name="#{device.name}")
                 p #{device.name} ( #{device.dimensions[0]} • #{device.dimensions[1]} )

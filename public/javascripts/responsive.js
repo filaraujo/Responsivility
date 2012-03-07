@@ -1,6 +1,20 @@
-(function(){
+Responsivility = (function(){
+    var events = [],
+
+        event = function( event, type ){
+            return events[event] || (events[event] = jQuery.Callbacks( type ))
+        };
+
+    return {
+        event: event
+    }
+})();
+
+Responsivility.app = (function(){
 
     var
+        event = Responsivility.event,
+
         $body,
 
         $devices,
@@ -11,16 +25,23 @@
 
         $page,
 
-        $mark,
-
         $marker,
+
+        init = function(){
+            $page.addClass( 'fx' );
+            setResponsive.call(  $devices.filter( '.auto' ) );
+        },
 
         setFrame = function(){
             $iframe.attr( 'src', $input.val() );
             return false;
         },
 
-        setResponsive = function( dimensions ){
+        setUrl = function(){
+            history.pushState({},'Responsivility','?q='+  $input.val());
+        },
+
+        setResponsive = function(){
 
             var $el = $( this ),
                 dimensions = [];
@@ -40,30 +61,35 @@
 
         };
 
+    // define events
+    event( 'setDeviceResolution' ).add( setResponsive );
+    event( 'setUrl' ).add( setFrame, setUrl );
+
     $body = $( 'body' );
-    $page = $( '.page-content' ).addClass( 'fx' );
+    $page = $( '.page-content' );
     $iframe = $page.find( 'iframe' );
     $marker = $( '.ruler-marker');
-    $devices  = $( '.device' ).on( 'click', setResponsive );
-    $input = $('.url', $body ).on( 'submit', 'form', setFrame ).find( 'input' );
-    $devices.filter( '.auto' ).trigger( 'click' ).end();
+    $devices  = $( '.device' ).on( 'click', event( 'setDeviceResolution' ).fire );
+    $input = $('.url', $body ).on( 'submit', 'form', function(){
+        event( 'setUrl' ).add( setFrame ).fire();
+        return false;
+    } ).find( 'input' );
 
-//    $marker.resizable({
-//        handles: 'e, w',
-//        maxHeight: 7,
-//        minHeight: 7,
-//        minWidth: 300
-//    });
-
-
+    init();
 
     return {};
 })();
 
 
+
+
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-29773084-1']);
 _gaq.push(['_trackPageview']);
+
+Responsivility.event( 'setDeviceResolution' ).add( function(){
+    _gaq.push(['_trackEvent','Devices', 'setResolution', $( this ).data('name')]);
+});
 
 (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;

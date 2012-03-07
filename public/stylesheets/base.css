@@ -100,6 +100,7 @@ html,body{background:#585858;overflow:hidden}
 .page .url form input{-webkit-border-radius:4px 0 0 4px;-moz-border-radius:4px 0 0 4px;border-radius:4px 0 0 4px;border:0;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.20);-moz-box-shadow:inset 0 1px 1px rgba(0,0,0,0.20);box-shadow:inset 0 1px 1px rgba(0,0,0,0.20);color:#666;font-size:12px;line-height:24px;padding:0 10px;outline:none;-webkit-transition:all .75s;-moz-transition:all .75s;transition:all .75s;width:52px}
 .page .url form button{background:-webkit-gradient(linear, left top, left bottom, color-stop(0, #4ab2d4), color-stop(1, #5ec1e1));background:-webkit-linear-gradient(top, #4ab2d4 0%, #5ec1e1 100%);background:-moz-linear-gradient(top, #4ab2d4 0%, #5ec1e1 100%);background:linear-gradient(top, #4ab2d4 0%, #5ec1e1 100%);border:0;-webkit-border-radius:0 4px 4px 0;-moz-border-radius:0 4px 4px 0;border-radius:0 4px 4px 0;color:#fff;font-size:10px;height:24px;line-height:20px;position:absolute;right:0;((null)):0;text-transform:uppercase;width:35px}
 .page .url:hover input{width:500px}
+.page .url input:focus{width:500px}
 .page .page-content{background:#fff;height:100%;margin:-2px auto auto;top:75px;position:relative;width:100%;}
 .page .page-content iframe{border:0;margin:auto;height:100%;width:100%}
 .page .page-content.fx{-webkit-transition:width .4s;-moz-transition:width .4s;transition:width .4s}

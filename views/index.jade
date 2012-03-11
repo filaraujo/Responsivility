@@ -1,5 +1,12 @@
-if site
-    iframe(src="#{site}")
-else
-    iframe(src="about:blank")
+div.page-content-iframe
+    if site
+        iframe(src="#{site}")
+    else
+        iframe(src="about:blank")
+    div.drag-left
+    div.drag-right
+    div.drag-bottom
+
+.page-content-about
+    iframe(src="")
 

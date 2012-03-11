@@ -1,0 +1,13 @@
+extends base
+
+block css
+    link(href="http://fonts.googleapis.com/css?family=Andika", rel="stylesheet", type="text/css")
+    link(rel='stylesheet', href='/stylesheets/app.css')
+
+block header
+    include ../modules/header
+
+block footer-scripts
+    script(src='/javascripts/vendor/jquery/jquery-1.7.1.min.js')
+    script(src='/javascripts/vendor/threedubmedia/jquery.event.drag-2.0.min.js')
+    script(src='/javascripts/responsive.js')

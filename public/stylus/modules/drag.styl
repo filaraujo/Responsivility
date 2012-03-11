@@ -1,0 +1,27 @@
+.drag-left,
+.drag-right,
+.drag-bottom
+    background: #5ec1e1
+    content: ''
+    width: 2px
+    absolute: top 0 bottom 0
+    transition( all .4s )
+
+.drag-left
+    cursor: col-resize
+    right: 100%
+    width: $dragTabWidth
+
+.drag-right
+    cursor: col-resize
+    left: 100%
+    width: $dragTabWidth
+
+.drag-bottom
+    border-radius: 0 0 $dragTabRadius $dragTabRadius
+    cursor: s-resize
+    left: -1 * $dragTabWidth
+    height: $dragTabWidth
+    right: -1 * $dragTabWidth
+    top: 100%
+    width: auto

@@ -1,0 +1,24 @@
+!!! 5
+html
+    head
+        title= title
+        meta(name="description", content="Responsive design testing tool")
+        meta(name="keywords", content="responsive design, responsivility, responsive testing, responsive design testing, adaptive design, adaptive design testing, css3")
+        link(rel='stylesheet', href='/stylesheets/base.css')
+
+        block css
+
+        block header-scripts
+    body
+        div.page
+            block header
+
+            div.page-content
+                != body
+
+            block footer
+
+        block templates
+
+        script(src='/javascripts/analytics.js')
+        block footer-scripts

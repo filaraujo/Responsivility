@@ -19,6 +19,7 @@ var app = module.exports = express.createServer();
 app.configure( function() {
     app.set( 'views', __dirname + '/views' );
     app.set( 'view engine', 'jade' );
+    app.set('view options', { pretty: true });
     app.use( express.bodyParser() );
 //    app.use( express.logger() );
     app.use( express.methodOverride() );
@@ -43,6 +44,7 @@ app.configure( 'production', function() {
 
 // Routes
 app.get( '/', routes.index );
+app.get( '/about', routes.about );
 
 app.listen((app.settings.env === 'production') ? 80 : 3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

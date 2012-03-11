@@ -15,9 +15,15 @@ Responsivility.app = (function(){
     var
         event = Responsivility.event,
 
+        $about,
+
         $body,
 
         $devices,
+
+        dimensions,
+
+        $drag,
 
         $iframe,
 
@@ -43,8 +49,9 @@ Responsivility.app = (function(){
 
         setResponsive = function(){
 
-            var $el = $( this ),
-                dimensions = [];
+            var $el = $( this );
+
+            dimensions = [];
 
             if ( $el.is( '.auto' ) ) {
                 dimensions = [$body.width(), $(window).height()];
@@ -59,6 +66,11 @@ Responsivility.app = (function(){
 
             $el.addClass( 'selected' );
 
+        },
+
+        showAbout = function(){
+            $page.toggleClass( 'flip' );
+            $about.attr( 'src', '/about');
         };
 
     // define events
@@ -67,32 +79,29 @@ Responsivility.app = (function(){
 
     $body = $( 'body' );
     $page = $( '.page-content' );
-    $iframe = $page.find( 'iframe' );
-    $marker = $( '.ruler-marker');
+    $about = $page.find( '.page-content-about iframe' );
+    $iframe = $page.find( '.page-content-iframe iframe' );
+    $marker = $( '.ruler-marker' );
     $devices  = $( '.device' ).on( 'click', event( 'setDeviceResolution' ).fire );
     $input = $('.url', $body ).on( 'submit', 'form', function(){
         event( 'setUrl' ).add( setFrame ).fire();
         return false;
     } ).find( 'input' );
 
+    $( '.help' ).on( 'click', showAbout );
+
+//    $drag = $( '.drag-left, .drag-right' ).on( 'drag' ,function( event ){
+//        $( this ).css( event.shiftKey ? {
+//            top: event.offsetY } : {
+//            left: event.offsetX
+//        });
+//    });
+
     init();
 
     return {};
 })();
 
-
-
-
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-29773084-1']);
-_gaq.push(['_trackPageview']);
-
 Responsivility.event( 'setDeviceResolution' ).add( function(){
     _gaq.push(['_trackEvent','Devices', 'setResolution', $( this ).data('name')]);
 });
-
-(function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();

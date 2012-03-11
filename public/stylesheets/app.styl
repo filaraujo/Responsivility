@@ -1,0 +1,67 @@
+@import 'nib'
+
+$rulerSize = 6000px
+$rulerInterval = 50px
+
+$darkblue = #4AB2D4
+$dragTabWidth = 7px
+$dragTabRadius = 3px
+
+html,
+body
+    background: #585858
+    font-size: 100%
+    height: 100%
+    overflow: hidden
+
+.page
+    margin: 0
+
+
+    @import "../stylus/modules/header"
+
+    .page-content
+        background: #fff
+        height: 100%
+        margin: -2px auto auto;
+        -moz-transform-style: preserve-3d
+        -webkit-transform-style: preserve-3d
+        transform-style: preserve-3d
+        top: $headerSize - 10px
+        position: relative
+        width: 100%
+
+        &.flip
+            transform( rotate3d(0, 1, 0, 180deg) )
+
+        .page-content-iframe
+            backface-visibility( hidden )
+            border: 0
+            box-shadow: 0 0 4px rgba(0,0,0,.3)
+            bottom: 0
+            position: absolute
+            top: 0
+            left: 0
+            right: 0
+
+            @import "../stylus/modules/drag"
+
+        .page-content-about
+            backface-visibility( hidden )
+            background: #fff
+            bottom: 0
+            left: 0
+            position: absolute
+            right: 0
+            transform( rotate3d(0, 1, 0, 180deg) )
+            top: 0
+
+        iframe
+            border: 0
+            box-shadow: 0 0 4px rgba(0,0,0,.3)
+            height: 100%
+            width: 100%
+
+
+        &.fx
+            transition( all .4s )

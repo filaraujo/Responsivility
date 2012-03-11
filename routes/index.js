@@ -1,7 +1,3 @@
-
-/*
- * GET home page.
- */
 var rulerWidth = 6000,
     interval = 50,
     ruleCount = rulerWidth / 2 / interval,
@@ -29,9 +25,17 @@ rules = rules.reverse();
 
 exports.index = function(req, res){
     res.render('index', {
+        layout: 'layouts/app.jade',
         title: 'Responsivility',
         rules: rules,
         devices: devices,
         site: req.query.q || ''
+    });
+};
+
+exports.about = function(req, res){
+    res.render('about', {
+        title: 'Responsivility About',
+        layout: 'layouts/base.jade'
     });
 };

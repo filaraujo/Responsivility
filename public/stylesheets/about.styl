@@ -10,7 +10,7 @@ body
     width: 50%
 
 .forkme
-    fixed: top 1.75em left -3.75em
+    fixed: top 2em left -4em
     transform( rotate(-45deg) )
     background-color: #4AB2D4
     border: 1px solid #2C95B8
@@ -23,7 +23,7 @@ body
         font-weight: bold
         font-size: .75em
         line-height: 32px
-        padding:  0 4.75em
+        padding:  1em 4.5em
         text-decoration: none;
 
 h1
@@ -45,14 +45,15 @@ h1
 
 @media all and ( min-width: 0 ) and ( max-width: 480px )
     body
+        font-size: .75em
         width: 80%
 
-    body
-        font-size: .75em
-
     .forkme
-        top: 1.33em
-        left: -2.66em
+        top: 1em
+        left: -3.5em
+
+        a
+            font-size: .8em
 
         span
             display: none
@@ -67,7 +68,5 @@ h1
 
 @media all and ( min-width: 481px ) and ( max-width: 1024px )
     body
-        width: 65%
-
-    body
         font-size: .825em
+        width: 65%

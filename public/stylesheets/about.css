@@ -1,2 +1,18 @@
+html,body{font-size:100%}
+body{margin:auto;text-align:center;width:50%}
+.forkme{position:fixed;top:1.75em;left:-3.75em;-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);transform:rotate(-45deg);background-color:#4ab2d4;border:1px solid #2c95b8;-webkit-box-shadow:0 1px 3px rgba(0,0,0,0.30),0 -1px 3px rgba(0,0,0,0.10);-moz-box-shadow:0 1px 3px rgba(0,0,0,0.30),0 -1px 3px rgba(0,0,0,0.10);box-shadow:0 1px 3px rgba(0,0,0,0.30),0 -1px 3px rgba(0,0,0,0.10);overflow:hidden;text-align:center;}
+.forkme a{color:#fff;font-weight:bold;font-size:.75em;line-height:32px;padding:0 4.75em;text-decoration:none}
 h1{color:#666;font-size:2.625em;font-family:'Andika',sans-serif;}
-h1 span{color:#666;font-size:12px;font-family:Arial;display:block;margin-top:-8px}
+h1 span{color:#666;font:normal 10px Verdana;display:block;margin-top:6px;}
+h1 span i{text-decoration:line-through}
+h1 span b{color:#4ab2d4}
+@media all and ( min-width: 0 ) and ( max-width: 480px ){body{width:80%}
+body{font-size:.75em}
+.forkme{top:1.33em;left:-2.66em;}
+.forkme span{display:none}
+h1{margin-top:1.25em}
+h2{text-align:left}
+p{text-align:left}
+}@media all and ( min-width: 481px ) and ( max-width: 1024px ){body{width:65%}
+body{font-size:.825em}
+}

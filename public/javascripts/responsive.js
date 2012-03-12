@@ -89,13 +89,28 @@ Responsivility.app = (function(){
     } ).find( 'input' );
 
     $( '.help' ).on( 'click', showAbout );
-
-//    $drag = $( '.drag-left, .drag-right' ).on( 'drag' ,function( event ){
-//        $( this ).css( event.shiftKey ? {
-//            top: event.offsetY } : {
-//            left: event.offsetX
-//        });
-//    });
+//
+//    var drag = function( e ){
+//            var pos = e.clientX,
+//                delta;
+//
+//            delta = startPos - pos;
+//            $page.width( width + -delta );
+//            console.log(delta);
+//        },
+//        width;
+//    var startPos,
+//        dragging = false;
+//
+//    $drag = $( '.drag-left, .drag-right' ).on( 'dragstart' ,function( event ){
+//        startPos  = event.clientX;
+//        width = $page.width();
+//        $page.removeClass('fx');
+//        $(window ).on('mousemove', drag);
+//    } ).on( 'dragstop', function( e ){
+//        $(window ).off('mousemove', drag);
+//        $page.addClass('fx');
+//    } );
 
     init();
 

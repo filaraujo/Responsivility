@@ -8,17 +8,16 @@ html
 
         block css
 
+        block templates
+
         block header-scripts
     body
         div.page
             block header
 
-            div.page-content
-                != body
+            != body
 
             block footer
 
-        block templates
-
-        script(src='/javascripts/analytics.js')
-        block footer-scripts
+            script(src='/javascripts/analytics.js')
+            block footer-scripts

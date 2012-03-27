@@ -7,7 +7,11 @@ block css
 block header
     include ../modules/header
 
+block templates
+    script(id="iframeTmpl", type="text/x-jsrender")
+        include ../modules/iframe
+
 block footer-scripts
     script(src='/javascripts/vendor/jquery/jquery-1.7.1.min.js')
-    script(src='/javascripts/vendor/threedubmedia/jquery.event.drag-2.0.min.js')
+    script(src='/javascripts/vendor/jquery/jsrender.js')
     script(src='/javascripts/responsive.js')

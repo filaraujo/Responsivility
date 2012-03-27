@@ -1,0 +1,155 @@
+$deviceScale = .028
+$devicesStartPoint = 31px
+
+$desktopWidth = 1200px
+$desktopHeight = 800px
+
+$tabletLandscapeWidth = 1024px
+$tabletLandscapeHeight = 768px
+
+$mobileLandscapeWidth = 480px
+$mobileLandscapeHeight = 320px
+
+$smallTabletLandscapeWidth = 640px
+$smallTabletLandscapeHeight = 460px
+
+.devices
+    absolute: left 50%
+    top: $devicesStartPoint
+    height: 1px;
+    margin-left:  -1 * ($rulerSize / 2)
+    width: $rulerSize
+    z-index: 3
+
+    .device
+        cursor: pointer
+
+        p
+            background: #4ab2d4
+            border-radius: 3px
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .3)
+            color: #fff
+            display: none
+            font-size: 12px
+            absolute: top 50px left 50%
+            margin-left: -120px
+            padding: 10px
+            text-align: center
+            width: 240px
+            z-index: 5
+
+        &:after
+            background: #e7e7e7
+            border-radius: 2px
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .2)
+            content: ''
+            absolute: top 0 left 50%
+            z-index: 4
+
+        &:hover p
+            display: block
+
+        &:hover:after
+            background: #96def6
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .4)
+
+        &.selected:after
+            background: #4ab2d4
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .2)
+
+        &:before
+            background: #96def6
+            content: ''
+            display: none
+            height: 7px
+            absolute: top 20px left 50%
+
+        &:hover:before
+            display: block
+
+        &.auto:before
+            left: 0
+            right: 0
+
+        &.auto:after
+            border-radius: 10px
+            height: 8px
+            margin-left: -4px
+            margin-top: -4px
+            width: 8px
+
+        &.desktop:before
+            margin-left: (-1 * $desktopWidth / 2)
+            width: $desktopWidth
+
+        &.desktop:after
+            height: $desktopHeight * $deviceScale
+            margin-left: -125px
+            margin-top: (-1 * $desktopHeight * $deviceScale / 2 )
+            width: $desktopWidth * $deviceScale
+
+        &.tablet-portrait
+            &:before
+                margin-left: (-1 * $tabletLandscapeHeight / 2)
+                width: $tabletLandscapeHeight
+
+            &:after
+                height: $tabletLandscapeWidth * $deviceScale
+                margin-left: 60px
+                margin-top: (-1 * $tabletLandscapeWidth * $deviceScale / 2 )
+                width: $tabletLandscapeHeight * $deviceScale
+
+        &.tablet-landscape:
+            &:before
+                margin-left: (-1 * $tabletLandscapeWidth / 2)
+                width: $tabletLandscapeWidth
+
+            &:after
+                height: $tabletLandscapeHeight * $deviceScale
+                margin-left: -85px
+                margin-top: (-1 * $tabletLandscapeHeight * $deviceScale / 2 )
+                width: $tabletLandscapeWidth * $deviceScale
+
+        &.small-tablet-portrait
+            &:before
+                margin-left: (-1 * $smallTabletLandscapeHeight / 2)
+                width: $smallTabletLandscapeHeight
+
+            &:after
+                height: $smallTabletLandscapeWidth * $deviceScale
+                margin-left: 35px
+                margin-top: (-1 * $smallTabletLandscapeWidth * $deviceScale / 2 )
+                width: $smallTabletLandscapeHeight * $deviceScale
+
+        &.small-tablet-landscape
+            &:before
+                margin-left: (-1 * $smallTabletLandscapeWidth / 2)
+                width: $smallTabletLandscapeWidth
+
+            &:after
+                height: $smallTabletLandscapeHeight * $deviceScale
+                margin-left: -50px
+                margin-top: (-1 * $smallTabletLandscapeHeight * $deviceScale / 2 )
+                width: $smallTabletLandscapeWidth * $deviceScale
+
+        &.mobile-portrait
+            &:before
+                margin-left: (-1 * $mobileLandscapeHeight / 2)
+                width: $mobileLandscapeHeight
+
+            &:after
+                height: $mobileLandscapeWidth * $deviceScale
+                margin-left: 15px
+                margin-top: (-1 * $mobileLandscapeWidth * $deviceScale / 2 )
+                width: $mobileLandscapeHeight * $deviceScale
+
+        &.mobile-landscape
+            &:before
+                margin-left: (-1 * $mobileLandscapeWidth / 2)
+                width: $mobileLandscapeWidth
+
+            &:after
+                height: $mobileLandscapeHeight * $deviceScale
+                margin-left: -25px
+                margin-top: (-1 * $mobileLandscapeHeight * $deviceScale / 2 )
+                width: $mobileLandscapeWidth * $deviceScale

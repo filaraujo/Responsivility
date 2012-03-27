@@ -15,31 +15,64 @@ Responsivility.app = (function(){
     var
         event = Responsivility.event,
 
-        $about,
-
         $body,
+
+        $content,
 
         $devices,
 
-        dimensions,
+        $frameTmpl,
 
-        $drag,
-
-        $iframe,
+        $iframes,
 
         $input,
 
         $page,
 
-        $marker,
+        addFrame = function(){
+            var iframe = $( $frameTmpl.render({}) ).addClass( 'mobile-portrait' );
+
+            iframe.find( 'iframe' ).attr( 'src', $input.val() );
+            $iframes = $iframes.add( iframe );
+            $content.prepend( iframe );
+        },
 
         init = function(){
+            event( 'setDeviceResolution' ).fireWith(  $devices.filter( '.auto' ) );
             $page.addClass( 'fx' );
-            setResponsive.call(  $devices.filter( '.auto' ) );
+        },
+
+        lockFrame = function( ){
+
+            var $el = $( this ).parent();
+
+            if( $el.is( '.locked' ) ){
+                $iframes = $iframes.add( $el );
+                $el.removeClass( 'locked' );
+            } else {
+                $iframes = $iframes.not( $el );
+                $el.addClass( 'locked' );
+            }
+
+        },
+
+        openDevices = function(){
+            $( this ).toggleClass( 'active' );
+            $page.toggleClass( 'devices' );
+        },
+
+        removeFrame = function(){
+            $( this ).parent().remove();
+        },
+
+        resetFrame = function(){
+            $( this ).siblings( 'iframe' ).attr( 'src', function ( i, val ) {
+                return val;
+            });
         },
 
         setFrame = function(){
-            $iframe.attr( 'src', $input.val() );
+            $iframes.find( 'iframe' ).attr( 'src', $input.val() );
             return false;
         },
 
@@ -51,66 +84,46 @@ Responsivility.app = (function(){
 
             var $el = $( this );
 
-            dimensions = [];
-
             if ( $el.is( '.auto' ) ) {
-                dimensions = [$body.width(), $(window).height()];
+                $iframes.width( $body.width() );
             }
             else {
-                dimensions = dimensions.concat( $el.data( 'dimensions' ));
+                $iframes.removeAttr( 'style' );
             }
 
-            $page.width( dimensions[0] ).height( dimensions[1] );
-            $marker.width( dimensions[0] );
-            $devices.removeClass( 'selected' );
+            $iframes.attr( 'class', 'page-iframe '+$el.attr('class') );
 
-            $el.addClass( 'selected' );
-
-        },
-
-        showAbout = function(){
-            $page.toggleClass( 'flip' );
-            $about.attr( 'src', '/about');
         };
 
     // define events
     event( 'setDeviceResolution' ).add( setResponsive );
+    event( 'lockFrame' ).add( lockFrame );
+    event( 'removeFrame' ).add( removeFrame );
     event( 'setUrl' ).add( setFrame, setUrl );
+    event( 'resetUrl' ).add( resetFrame );
 
     $body = $( 'body' );
-    $page = $( '.page-content' );
-    $about = $page.find( '.page-content-about iframe' );
-    $iframe = $page.find( '.page-content-iframe iframe' );
-    $marker = $( '.ruler-marker' );
-    $devices  = $( '.device' ).on( 'click', event( 'setDeviceResolution' ).fire );
+
+    $frameTmpl = $( '#iframeTmpl' );
+
+    $page = $( '.page' )
+        .on( 'click', '.icon-th-list', openDevices )
+        .on( 'click', '.icon-plus', addFrame )
+        .on( 'click', '.icon-refresh', event( 'resetUrl' ).fire )
+        .on( 'click', '.icon-key', event( 'lockFrame' ).fire )
+        .on( 'click', '.icon-trash', event( 'removeFrame' ).fire );
+
+    $content = $page.find( '.page-content');
+
+    $iframes  = $content.find( '.page-iframe' );
+
+    $devices  = $( '.page-devices li' ).on( 'click', event( 'setDeviceResolution' ).fire );
+
+
     $input = $('.url', $body ).on( 'submit', 'form', function(){
-        event( 'setUrl' ).add( setFrame ).fire();
+        event( 'setUrl' ).fire();
         return false;
     } ).find( 'input' );
-
-    $( '.help' ).on( 'click', showAbout );
-//
-//    var drag = function( e ){
-//            var pos = e.clientX,
-//                delta;
-//
-//            delta = startPos - pos;
-//            $page.width( width + -delta );
-//            console.log(delta);
-//        },
-//        width;
-//    var startPos,
-//        dragging = false;
-//
-//    $drag = $( '.drag-left, .drag-right' ).on( 'dragstart' ,function( event ){
-//        startPos  = event.clientX;
-//        width = $page.width();
-//        $page.removeClass('fx');
-//        $(window ).on('mousemove', drag);
-//    } ).on( 'dragstop', function( e ){
-//        $(window ).off('mousemove', drag);
-//        $page.addClass('fx');
-//    } );
 
     init();
 

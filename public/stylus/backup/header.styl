@@ -1,0 +1,42 @@
+$headerPadding = 10px
+$headerSize = 85px
+
+
+$rulerHeight = 8px
+$rulerRoundedCorner = 1px
+$rulerStartPoint = 25px
+
+header
+    background: #eee /*585858*/
+    border-bottom: 1px solid #fff
+    box-shadow: 0 0 10px rgba(0, 0, 0, .6)
+    color: #fff
+    height: $headerSize
+    left: -1 * $headerPadding
+    padding: $headerPadding $headerPadding 0
+    position: fixed
+    right: -1 * $headerPadding
+    top: -1 * $headerPadding
+    z-index: 3
+
+    h1
+        absolute: left 20px top 7px
+        color: $darkblue
+        font-size: 18px
+        font-family: 'Andika', sans-serif;
+        margin: 10px 0 0
+
+    .help
+        color: $darkblue
+        cursor: pointer
+        position: absolute
+        right: 20px
+        top: 20px
+
+        &:hover
+            color: darken( $darkblue, 20% )
+
+    &
+        @import "../stylus/modules/devices"
+        @import "../stylus/modules/ruler"
+        @import "../stylus/modules/url"

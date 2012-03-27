@@ -1,8 +1,10 @@
 header
-    h1(title="Responsivility") Responsivility
-    div.help ?
-        //<a href="https://twitter.com/intent/tweet?button_hashtag=Responsivility&text=Playing%20around%20with%20Responsivility%2C%20a%20responsive%20design%20testing%20tool%20http%3A%2F%2Ffaraujo.no.de" class="twitter-hashtag-button" data-related="filipearaujo">Tweet #Responsivility</a>
-        //<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-    include devices
-    include ruler
-    include url
+    .ruler
+
+    a.icon-th-list(title="show devices")
+    a.icon-plus(title="add layout")
+
+    div.url
+        form(method="POST", action="/")
+            input(placeholder="http://", value="#{site}")
+            button.icon-search(type="submit")

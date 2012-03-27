@@ -1,42 +1,94 @@
-$headerPadding = 10px
-$headerSize = 85px
-
-
-$rulerHeight = 8px
-$rulerRoundedCorner = 1px
-$rulerStartPoint = 25px
-
 header
-    background: #eee /*585858*/
-    border-bottom: 1px solid #fff
-    box-shadow: 0 0 10px rgba(0, 0, 0, .6)
-    color: #fff
+    background: $lightgray
     height: $headerSize
-    left: -1 * $headerPadding
-    padding: $headerPadding $headerPadding 0
     position: fixed
-    right: -1 * $headerPadding
-    top: -1 * $headerPadding
-    z-index: 3
+    top: 0
+    left: 0
+    right: 0
 
-    h1
-        absolute: left 20px top 7px
-        color: $darkblue
-        font-size: 18px
-        font-family: 'Andika', sans-serif;
-        margin: 10px 0 0
+    .ruler
+        background: #d7d7d7
+        border-bottom: 1px solid $lightgray
+        bottom: -4px
+        box-shadow: inset 0 1px 1px #acacac
+        height: $rulerHeight
+        absolute: left 0 right 0
 
-    .help
-        color: $darkblue
+    .icon-plus,
+    .icon-th-list
+        absolute: top 0
+        color: #cdcdcd
         cursor: pointer
-        position: absolute
-        right: 20px
-        top: 20px
+        font-size: 20px
+        height: 30px
+        padding-top: 4px
+        text-align: center
+        text-shadow: 1px 1px 1px #fff
+        width: 36px
 
         &:hover
-            color: darken( $darkblue, 20% )
+            color: $darkblue
+            text-shadow: none
 
-    &
-        @import "../stylus/modules/devices"
-        @import "../stylus/modules/ruler"
-        @import "../stylus/modules/url"
+        &:active
+            color: #fff
+
+    .icon-th-list
+        left: 0
+
+        &.active
+            background: #585858
+            text-shadow: none
+
+        &.active:hover
+            color: #cdcdcd
+
+    .icon-plus
+        left: 36px
+
+    .url
+        absolute: top 0 right 0
+        height: 30px
+
+        form
+            width: 100%
+
+            input
+                background: transparent
+                border: 0
+                color: #cdcdcd
+                float: left
+                font-size: 12px
+                line-height: 30px
+                height: 30px
+                padding-left: 10px
+                outline: none
+                text-align: right
+                width: auto
+
+            button
+                background: transparent
+                border: 0
+                color: #cdcdcd
+                float: left
+                font-size: 20px
+                height: 30px
+                line-height: 30px
+                width: 36px
+
+                &:hover
+                    color: $darkblue
+
+        &:hover
+            button
+                color: #585858
+            input
+                color: #585858
+
+        & input:focus
+            color: #585858
+
+            & + button
+                color: #585858
+
+

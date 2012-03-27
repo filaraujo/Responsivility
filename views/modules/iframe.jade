@@ -1,0 +1,12 @@
+.page-iframe
+    a.icon-refresh(title="reload")
+    a.icon-key(title="lock")
+    a.icon-trash(title="remove")
+
+    .page-iframe-marker
+    .page-iframe-mask
+
+    if site
+        iframe(src="#{site}")
+    else
+        iframe(src="about:blank")

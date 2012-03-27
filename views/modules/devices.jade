@@ -1,4 +1,6 @@
-div.devices
-    each device in devices
-        div.device(class="#{device.id}", data-dimensions="[#{device.dimensions}]", data-name="#{device.name}")
-                p #{device.name} ( #{device.dimensions[0]} • #{device.dimensions[1]} )
+div.page-devices
+    ul
+        each device in devices
+            li(class="#{device.id}", data-dimensions="[#{device.dimensions}]", data-name="#{device.name}")
+                    h3 #{device.name}
+                    p #{device.dimensions[0]} • #{device.dimensions[1]}

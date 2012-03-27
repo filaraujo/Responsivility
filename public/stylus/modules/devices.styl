@@ -15,40 +15,42 @@ $smallTabletLandscapeHeight = 460px
 
 .page-devices
     bottom: 0
-    padding: 2em 1em 0 1em
     position: absolute
+    padding-top: 1em
     left: -1 * $deviceColumnSize
     top: 0
     width: $deviceColumnSize
     z-index: 0
 
     ul
+        border-bottom: 1px solid #aaa
         list-style: none
         margin: 0
         padding: 0
 
         li
+            border-bottom: 1px solid #444
+            border-top: 1px solid #aaa
             clear: both
             cursor: pointer
-            height: 3em
             position: relative
-            margin: 0 0 .375em 0
-            padding-right: .5em
+            padding: .375em .75em
+
+            &:first-child
+                border-top: 0
 
             h3
                 color: #eee
-                border-bottom: 1px solid #aaa
-                font-size: .875em
-                height: 1.75em
-                line-height: 1.75em
+                font-size: .825em
+                height: 1.5em
+                line-height: 1.5em
                 margin: 0
 
             p
-                color: #ccc
-                font-size: .75em
-                font-weight: bold
-                height: 1.75em
-                line-height: 1.75em
+                color: #96DEF6
+                font-size: .725em
+                height: 1.5em
+                line-height: 1.5em
                 margin: 0
 
             &:after
@@ -56,24 +58,16 @@ $smallTabletLandscapeHeight = 460px
                 border-radius: 2px
                 box-shadow: inset 0 1px 1px rgba(0, 0, 0, .2)
                 content: ''
-                absolute: top 1.5em right 0
+                absolute: top 50% right 0.75em
 
             &:hover h3
                 border-color: $darkblue
-                color: $darkblue
-
-            &:hover p
-                color: #96DEF6
 
             &.selected h3
                 border-color: $darkblue
                 color: $darkblue
 
             &:hover:after
-                background: #96def6
-                box-shadow: inset 0 1px 1px rgba(0, 0, 0, .4)
-
-            &.selected:after
                 background: #4ab2d4
                 box-shadow: inset 0 1px 1px rgba(0, 0, 0, .2)
 

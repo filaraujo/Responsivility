@@ -38,7 +38,7 @@ exports.index = function(req, res){
         title: 'Responsivility',
         rules: rules,
         devices: devices,
-        site: site
+        site: site || 'http://www.bostonglobe.com'
     });
 };
 

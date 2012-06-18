@@ -1,10 +1,11 @@
 header
     background: $lightgray
+    left: 0
     height: $headerSize
     position: fixed
-    top: 0
-    left: 0
+    padding: 0 100px 0 72px
     right: 0
+    top: 0
 
     .ruler
         background: #d7d7d7
@@ -14,7 +15,7 @@ header
         height: $rulerHeight
         absolute: left 0 right 0
 
-    .icon-plus,
+    .icon-plus-sign,
     .icon-th-list
         absolute: top 0
         color: #cdcdcd
@@ -24,6 +25,7 @@ header
         padding-top: 6px
         text-align: center
         text-shadow: 1px 1px 1px #fff
+        transition: all .5s ease-out
         width: 36px
 
         &:hover
@@ -43,12 +45,29 @@ header
         &.active:hover
             color: #cdcdcd
 
-    .icon-plus
+    .icon-plus-sign
         left: 36px
 
+
+    .pins
+        height: 100%
+        width: 100%
+
+        .pin
+            color: #999
+            display: inline-block
+            font-size: 11px
+            height: 32px
+            line-height: 30px
+            margin: 2px 0 0 0
+            padding: 0 12px 0 12px
+
     .url
+        background: $lightgray
         absolute: top 0 right 0
         height: 30px
+        padding-right: 32px
+        width: auto
 
         form
             width: 100%
@@ -57,14 +76,14 @@ header
                 background: transparent
                 border: 0
                 color: #cdcdcd
-                float: left
                 font-size: 12px
                 line-height: 30px
                 height: 30px
-                padding-left: 10px
+                padding: 0 8px
                 outline: none
                 text-align: right
-                width: auto
+                transition: all .5s ease-out
+                width: 72px
 
             button
                 background: transparent
@@ -74,24 +93,27 @@ header
                 font-size: 20px
                 height: 30px
                 line-height: 30px
+                position: absolute
+                right: 0
+                top: 0
+                transition: all .5s ease-out
                 width: 36px
 
                 &:active
                     color: #fff
 
         &:hover
-            background: #585858
             button
-                color: #cdcdcd
+                color: #585858
             input
-                color: #cdcdcd
+                color: #585858
+                width: 300px
 
         & input:focus
-            background: #585858
-            color: #cdcdcd
+            color: #585858
+            width: 300px
 
             & + button
-                background: #585858
-                color: #cdcdcd
+                color: #585858
 
 

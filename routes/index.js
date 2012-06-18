@@ -24,12 +24,21 @@ devices.map( function( device ){
 rules = rules.reverse();
 
 exports.index = function(req, res){
+    var site = req.params.site || '';
+
+
+    console.log(req.params)
+
+    if(site && !/^http:\/\//.test(site)){
+        site = 'http://' + site;
+    }
+
     res.render('index', {
         layout: 'layouts/app.jade',
         title: 'Responsivility',
         rules: rules,
         devices: devices,
-        site: req.query.q || ''
+        site: site
     });
 };
 

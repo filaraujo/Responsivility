@@ -1,0 +1,12 @@
+.about{overflow:auto;height:100%;}
+.about .forkme{display:block}
+.about h1{color:#666;font-size:2.625em;font-family:'Andika',sans-serif;}
+.about h1 span{color:#666;font:normal 10px Verdana;display:block;margin-top:6px;}
+.about h1 span i{text-decoration:line-through}
+.about h1 span b{color:#4ab2d4}
+@media all and ( min-width: 0 ) and ( max-width: 480px ){.about .forkme{top:1em;left:-3em;padding:0 3em;}
+.about .forkme span{display:none}
+.about h1{margin-top:1.25em}
+.about h2{text-align:left}
+.about p{text-align:left}
+}@media all and ( min-width: 481px ) and ( max-width: 1024px ){}

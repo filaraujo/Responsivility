@@ -32,9 +32,10 @@ Responsivility.app = (function(){
         addFrame = function(){
             var iframe = $( $frameTmpl.render({}) ).addClass( 'mobile-portrait' );
 
-            iframe.find( 'iframe' ).attr( 'src', $input.val() );
             $iframes = $iframes.add( iframe );
             $content.prepend( iframe );
+
+            event( 'setUrl' ).fire( $input.val(), iframe );
         },
 
         init = function(){
@@ -71,13 +72,17 @@ Responsivility.app = (function(){
             });
         },
 
-        setFrame = function(){
-            $iframes.find( 'iframe' ).attr( 'src', $input.val() );
-            return false;
+        setFrame = function( url, frame ){
+
+            if(url && !/^http:\/\//.test(url)){
+                url = 'http://' + url;
+            }
+
+            (frame || $iframes).find( 'iframe' ).attr( 'src', ( !!url ) ? url : '/about' );
         },
 
-        setUrl = function(){
-            history.pushState({},'Responsivility','?q='+  $input.val());
+        setUrl = function( url ){
+            history.pushState({},'Responsivility', url);
         },
 
         setResponsive = function(){
@@ -93,14 +98,19 @@ Responsivility.app = (function(){
 
             $iframes.attr( 'class', 'page-iframe '+$el.attr('class') );
 
+        },
+
+        showMask = function(){
+            $( this ).parent().toggleClass( 'mask' );
         };
 
     // define events
-    event( 'setDeviceResolution' ).add( setResponsive );
     event( 'lockFrame' ).add( lockFrame );
     event( 'removeFrame' ).add( removeFrame );
-    event( 'setUrl' ).add( setFrame, setUrl );
     event( 'resetUrl' ).add( resetFrame );
+    event( 'setDeviceResolution' ).add( setResponsive );
+    event( 'setUrl' ).add( setFrame, setUrl );
+    event( 'showMask' ).add( showMask );
 
     $body = $( 'body' );
 
@@ -108,10 +118,11 @@ Responsivility.app = (function(){
 
     $page = $( '.page' )
         .on( 'click', '.icon-th-list', openDevices )
-        .on( 'click', '.icon-plus', addFrame )
+        .on( 'click', '.icon-plus-sign', addFrame )
         .on( 'click', '.icon-refresh', event( 'resetUrl' ).fire )
-        .on( 'click', '.icon-key', event( 'lockFrame' ).fire )
-        .on( 'click', '.icon-trash', event( 'removeFrame' ).fire );
+        .on( 'click', '.icon-pushpin', event( 'lockFrame' ).fire )
+        .on( 'click', '.icon-trash', event( 'removeFrame' ).fire )
+        .on( 'click', '.icon-adjust', event( 'showMask' ).fire );
 
     $content = $page.find( '.page-content');
 
@@ -119,10 +130,10 @@ Responsivility.app = (function(){
 
     $devices  = $( '.page-devices li' ).on( 'click', event( 'setDeviceResolution' ).fire );
 
-
-    $input = $('.url', $body ).on( 'submit', 'form', function(){
-        event( 'setUrl' ).fire();
-        return false;
+    $input = $('.url', $body ).on( 'submit', 'form', function( e ){
+        var url = $input.val()
+        event( 'setUrl' ).fire( url );
+        e.preventDefault();
     } ).find( 'input' );
 
     init();

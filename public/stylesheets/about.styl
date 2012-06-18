@@ -1,67 +1,44 @@
-@import 'nib'
 
-html,
-body
-    font-size: 100%
+.about
+    overflow: auto
+    height: 100%
 
-body
-    margin: auto
-    text-align: center
-    width: 50%
-
-.forkme
-    background: #4AB2D4
-    border: 1px solid #2C95B8
-    box-shadow: 0 1px 3px rgba(0, 0, 0, .3), 0 -1px 3px rgba(0, 0, 0, .1)
-    color: #fff
-    display: block
-    font-size: 12px
-    line-height: 40px
-    absolute: top 2.5em left -5em
-    padding: 0 4.5em
-    text-align: center
-    text-decoration: none
-    transform( rotateZ(-45deg) )
-
-h1
-    color: #666
-    font-size: 2.625em
-    font-family: 'Andika', sans-serif;
-
-    span
-        color: #666
-        font: normal 10px Verdana
+    .forkme
         display: block
-        margin-top: 6px;
+    h1
+        color: #666
+        font-size: 2.625em
+        font-family: 'Andika', sans-serif;
 
-        i
-            text-decoration: line-through
-        b
-            color: #4AB2D4
+        span
+            color: #666
+            font: normal 10px Verdana
+            display: block
+            margin-top: 6px;
+
+            i
+                text-decoration: line-through
+            b
+                color: #4AB2D4
 
 
 @media all and ( min-width: 0 ) and ( max-width: 480px )
-    body
-        font-size: .75em
-        width: 80%
+    .about
+        .forkme
+            top: 1em
+            left: -3em
+            padding: 0 3em
 
-    .forkme
-        top: 1em
-        left: -3em
-        padding: 0 3em
+            span
+                display: none
 
-        span
-            display: none
+        h1
+            margin-top: 1.25em
 
-    h1
-        margin-top: 1.25em
-
-    h2
-        text-align: left
-    p
-        text-align: left
+        h2
+            text-align: left
+        p
+            text-align: left
 
 @media all and ( min-width: 481px ) and ( max-width: 1024px )
-    body
-        font-size: .825em
-        width: 65%
+    p

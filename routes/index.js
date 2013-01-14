@@ -24,10 +24,7 @@ devices.map( function( device ){
 rules = rules.reverse();
 
 exports.index = function(req, res){
-    var site = req.params.site || '';
-
-
-    console.log(req.params)
+    var site = req.query.q || '';
 
     if(site && !/^http:\/\//.test(site)){
         site = 'http://' + site;

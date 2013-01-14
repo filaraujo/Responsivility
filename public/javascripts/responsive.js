@@ -2,12 +2,12 @@ Responsivility = (function(){
     var events = [],
 
         event = function( event, type ){
-            return events[event] || (events[event] = jQuery.Callbacks( type ))
+            return events[event] || (events[event] = jQuery.Callbacks( type ));
         };
 
     return {
         event: event
-    }
+    };
 })();
 
 Responsivility.app = (function(){
@@ -72,17 +72,19 @@ Responsivility.app = (function(){
             });
         },
 
-        setFrame = function( url, frame ){
+        setFrame = function( url ){
 
             if(url && !/^http:\/\//.test(url)){
                 url = 'http://' + url;
             }
 
-            (frame || $iframes).find( 'iframe' ).attr( 'src', ( !!url ) ? url : '/about' );
+
+            $iframes.find( 'iframe' ).attr( 'src', ( !!url ) ? url : '/about' );
         },
 
         setUrl = function( url ){
-            history.pushState({},'Responsivility', url);
+
+            history.pushState(null,'Responsivility', '?q='+url);
         },
 
         setResponsive = function(){
@@ -131,9 +133,10 @@ Responsivility.app = (function(){
     $devices  = $( '.page-devices li' ).on( 'click', event( 'setDeviceResolution' ).fire );
 
     $input = $('.url', $body ).on( 'submit', 'form', function( e ){
-        var url = $input.val()
-        event( 'setUrl' ).fire( url );
+        event( 'setUrl' ).fire( $input.val() );
         e.preventDefault();
+        e.stopPropagation();
+        return false;
     } ).find( 'input' );
 
     init();

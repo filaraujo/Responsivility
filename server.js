@@ -44,8 +44,6 @@ app.configure( 'production', function() {
 
 // Routes
 app.get( '/', routes.index );
-//app.get( '/about', routes.about );
-app.get( '/:site', routes.index );
 
 
 app.listen((app.settings.env === 'production') ? 80 : 3000);

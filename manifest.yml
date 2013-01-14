@@ -1,0 +1,14 @@
+--- 
+applications: 
+  .: 
+    name: responsivility
+    url: ${name}.${target-base}
+    framework: 
+      info: 
+        description: Node.js Application
+        exec: 
+        mem: 64M
+      name: node
+    infra: aws
+    instances: 1
+    mem: 64M

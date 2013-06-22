@@ -1,4 +1,5 @@
 html,body{background:#585858;position:absolute;top:0;bottom:0;right:0;left:0}
+*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
 html{overflow:hidden}
 body{overflow-x:scroll;overflow-y:hidden}
 .page{height:100%;margin:0;position:relative;width:100%;}
@@ -43,16 +44,22 @@ body{overflow-x:scroll;overflow-y:hidden}
 .page .page-content .page-iframe.locked .icon-pushpin{color:#4ab2d4;-webkit-transform:rotate(15deg);-moz-transform:rotate(15deg);-o-transform:rotate(15deg);-ms-transform:rotate(15deg);transform:rotate(15deg)}
 .page .page-content .page-iframe.auto .page-iframe-mask{top:100%}
 .page .page-content .page-iframe.mobile-portrait{width:320px;}
+.page .page-content .page-iframe.mobile-portrait iframe{height:480px}
 .page .page-content .page-iframe.mobile-portrait .page-iframe-mask{top:480px}
 .page .page-content .page-iframe.mobile-landscape{width:480px;}
+.page .page-content .page-iframe.mobile-landscape iframe{height:320px}
 .page .page-content .page-iframe.mobile-landscape .page-iframe-mask{top:320px}
 .page .page-content .page-iframe.small-tablet-portrait{width:460px;}
+.page .page-content .page-iframe.small-tablet-portrait iframe{height:640px}
 .page .page-content .page-iframe.small-tablet-portrait .page-iframe-mask{top:640px}
 .page .page-content .page-iframe.small-tablet-landscape{width:640px;}
+.page .page-content .page-iframe.small-tablet-landscape iframe{height:460px}
 .page .page-content .page-iframe.small-tablet-landscape .page-iframe-mask{top:460px}
 .page .page-content .page-iframe.tablet-portrait{width:768px;}
+.page .page-content .page-iframe.tablet-portrait iframe{height:1024px}
 .page .page-content .page-iframe.tablet-portrait .page-iframe-mask{top:1024px}
 .page .page-content .page-iframe.tablet-landscape{width:1024px;}
+.page .page-content .page-iframe.tablet-landscape iframe{height:768px}
 .page .page-content .page-iframe.tablet-landscape .page-iframe-mask{top:768px}
 .page .page-content .page-iframe.desktop{width:1200px;}
 .page .page-content .page-iframe.desktop .page-frame-mask{top:800px}

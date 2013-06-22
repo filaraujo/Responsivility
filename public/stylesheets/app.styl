@@ -24,6 +24,11 @@ body
     right: 0
     left: 0
 
+* {
+
+    box-sizing: border-box
+}
+
 html
     overflow: hidden
 
@@ -158,11 +163,17 @@ body
             &.mobile-portrait
                 width: 320px
 
+                iframe
+                    height: 480px
+
                 .page-iframe-mask
                     top: 480px
 
             &.mobile-landscape
                 width: 480px
+
+                iframe
+                    height: 320px
 
                 .page-iframe-mask
                     top: 320px
@@ -170,11 +181,17 @@ body
             &.small-tablet-portrait
                 width: 460px
 
+                iframe
+                    height: 640px
+
                 .page-iframe-mask
                     top: 640px
 
             &.small-tablet-landscape
                 width: 640px
+
+                iframe
+                    height: 460px
 
                 .page-iframe-mask
                     top: 460px
@@ -182,11 +199,17 @@ body
             &.tablet-portrait
                 width: 768px
 
+                iframe
+                    height: 1024px
+
                 .page-iframe-mask
                     top: 1024px
 
             &.tablet-landscape
                 width: 1024px
+
+                iframe
+                    height: 768px
 
                 .page-iframe-mask
                     top: 768px

@@ -91,6 +91,8 @@ Responsivility.app = (function(){
 
             var $el = $( this );
 
+            console.log($el.data('dimensions')[0])
+
             if ( $el.is( '.auto' ) ) {
                 $iframes.width( $body.width() );
             }
@@ -98,7 +100,8 @@ Responsivility.app = (function(){
                 $iframes.removeAttr( 'style' );
             }
 
-            $iframes.attr( 'class', 'page-iframe '+$el.attr('class') );
+            $iframes
+                .attr( 'class', 'page-iframe '+$el.attr('class') );
 
         },
 
